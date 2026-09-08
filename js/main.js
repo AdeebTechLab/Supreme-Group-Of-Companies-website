@@ -2507,6 +2507,26 @@ function initDocumentViewerModal() {
         <img src="${activeImage}" alt="${activeSubTitle} - ${doc.company}" class="doc-preview-img" loading="lazy">
       </div>
 
+      <!-- Official Document Protection Notice -->
+<div class="document-protection-notice" role="note">
+  <div class="document-protection-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+      <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+      <circle cx="12" cy="15" r="1"></circle>
+    </svg>
+  </div>
+
+  <div class="document-protection-text">
+    <strong>Official Document — Protected</strong>
+    <span>
+      For verification purposes only. Unauthorized alteration,
+      reproduction, or misuse is strictly prohibited.
+      Tampered copies are not considered valid.
+    </span>
+  </div>
+</div>
+
       <!-- Credential Details Grid -->
       <div class="doc-meta-grid">
         <div class="doc-meta-card">
