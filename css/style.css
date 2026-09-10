@@ -7805,6 +7805,7 @@ body.menu-open {
   font-weight: 600;
   line-height: 1.45;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .info-link-group {
@@ -7812,6 +7813,35 @@ body.menu-open {
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
+  width: 100%;
+}
+
+.contact-leader-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.contact-phone-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-phone-role {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #0B2855;
+  letter-spacing: 0.2px;
+}
+
+.contact-phone-nums {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 6px;
 }
 
 .info-tel-link,
@@ -7821,6 +7851,7 @@ body.menu-open {
   font-weight: 700;
   text-decoration: none;
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .info-tel-link:hover,
@@ -9606,8 +9637,6 @@ body.menu-open {
   }
 }
 
-
-
 /* ==========================================================================
    OFFICIAL DOCUMENT PROTECTION NOTICE
    ========================================================================== */
@@ -9813,3 +9842,4 @@ body.menu-open {
     transform: none;
   }
 }
+

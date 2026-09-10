@@ -2873,21 +2873,37 @@ function initCareersScrollReveal() {
 /**
  * 22. Section 7: Business Offices Directory Dataset
  */
+const CONTACT_PHONE_GROUPS = [
+  {
+    role: 'CEO — Tanveer Saleem',
+    numbers: [
+      { text: '+923084081479', tel: '+923084081479' },
+      { text: '+923246886982', tel: '+923246886982' },
+      { text: '+13253319861', tel: '+13253319861' },
+      { text: '+920516109227', tel: '+920516109227' }
+    ]
+  },
+  {
+    role: 'M.D — Mohammed Azhar Naseer Wahla',
+    numbers: [
+      { text: '+923455608120', tel: '+923455608120' },
+      { text: '+923001065120', tel: '+923001065120' },
+      { text: '+920516109227', tel: '+920516109227' }
+    ]
+  }
+];
+
 const CONTACT_OFFICES_DATA = {
   'concord': {
     id: 'concord',
     name: 'CONCORD OVERSEAS EMPLOYMENT',
     tagline: 'Overseas Employment & Manpower Services',
     badge: 'OVERSEAS EMPLOYMENT',
-    address: 'State Life Building No. 7, Basement, Jinnah Avenue – Blue Area, F6/4, P.O. Box 1480, Islamabad – 4400, Pakistan',
-    phones: [
-      { text: '051-2271577', tel: '0512271577' },
-      { text: '051-2877377', tel: '0512877377' },
-      { text: '051-2872911', tel: '0512872911' }
-    ],
-    primaryCopyPhone: '051-2271577',
+    address: 'Business center executive block lower ground office no 5,6,13,14  Gulberg Green Islamabad',
+    phoneGroups: CONTACT_PHONE_GROUPS,
+    primaryCopyPhone: '+923084081479',
     fax: '051-2270706',
-    email: 'concordoverseas@gmail.com',
+    email: 'takhtar1234@hotmail.com',
     secondaryLabel: 'Associate Offices',
     secondaryChips: ['Karachi', 'Lahore', 'Quetta', 'Peshawar'],
     whatsapp: null // Verified official Islamabad landline only
@@ -2897,50 +2913,41 @@ const CONTACT_OFFICES_DATA = {
     name: 'DOLPHIN SHIPPERS (PRIVATE) LIMITED',
     tagline: 'INTERNATIONAL FREIGHT • SHIPPING • CARGO',
     badge: 'LOGISTICS & CARGO (IATA: 27326080003)',
-    address: '5th Floor, Al Shifa Tower, Near Al-Shifa Eye Trust Hospital, Jhelum Road, Rawalpindi – Pakistan',
-    phones: [
-      { text: '0331-8502711', tel: '03318502711' },
-      { text: '051-8436250', tel: '0518436250' },
-      { text: '051-8436252', tel: '0518436252' }
-    ],
-    primaryCopyPhone: '0331-8502711',
+    address: 'Business center executive block lower ground office no 5,6,13,14  Gulberg Green Islamabad',
+    phoneGroups: CONTACT_PHONE_GROUPS,
+    primaryCopyPhone: '+923084081479',
     fax: '051-8436252',
-    email: 'ceo@dolphinshippers.org',
+    email: 'takhtar1234@hotmail.com',
     website: 'dolphinshippers.org',
     secondaryLabel: 'Accreditations & Scope',
     secondaryChips: ['IATA Code: 27326080003', 'International Freight', 'Customs Clearing', 'Cranage Services'],
-    whatsapp: '923318502711'
+    whatsapp: '923084081479'
   },
   'leon-security': {
     id: 'leon-security',
     name: 'LEON SECURITY SERVICES (PVT) LIMITED',
     tagline: '“Right Protection Right Time”',
     badge: 'SECURITY SERVICES',
-    address: 'No. 7, 1st Floor, Riffatabad Plaza, Near Allied Bank, Iqbal Town, Islamabad',
-    phones: [
-      { text: '+92345-7558668', tel: '+923457558668' }
-    ],
-    primaryCopyPhone: '+92345-7558668',
-    email: null,
+    address: 'Business center executive block lower ground office no 5,6,13,14  Gulberg Green Islamabad',
+    phoneGroups: CONTACT_PHONE_GROUPS,
+    primaryCopyPhone: '+923084081479',
+    email: 'takhtar1234@hotmail.com',
     secondaryLabel: 'Regional Office',
     secondaryChips: ['Plaza No C-36/27 Block CCB, Lake City Holding, Raiwind Road, Lahore', 'ICT Licensed & MOI Approved NOC'],
-    whatsapp: '923457558668'
+    whatsapp: '923084081479'
   },
   'fajar': {
     id: 'fajar',
     name: 'FAJAR JANITORIAL SERVICES (PVT) LTD',
     tagline: 'JANITORIAL • MANPOWER • FACILITY SERVICES',
     badge: 'JANITORIAL & FACILITY',
-    address: 'Koral Chowk, Islamabad',
-    phones: [
-      { text: '0343 5664745', tel: '03435664745' },
-      { text: '0309 9111351', tel: '03099111351' }
-    ],
-    primaryCopyPhone: '0343 5664745',
-    email: null,
+    address: 'Business center executive block lower ground office no 5,6,13,14  Gulberg Green Islamabad',
+    phoneGroups: CONTACT_PHONE_GROUPS,
+    primaryCopyPhone: '+923084081479',
+    email: 'takhtar1234@hotmail.com',
     secondaryLabel: 'Specialized Capabilities',
     secondaryChips: ['Commercial Janitorial', 'HR & Manpower Supply', 'Uniform Stitching', 'Facility Management'],
-    whatsapp: '923435664745'
+    whatsapp: '923084081479'
   }
 };
 
@@ -2990,10 +2997,22 @@ function initBusinessOfficeSelector() {
 
         // Render phone links
         if (phonesGroup) {
-          phonesGroup.innerHTML = data.phones.map((p, idx) => `
-            <a href="tel:${p.tel}" class="info-tel-link">${p.text}</a>
-            ${idx < data.phones.length - 1 ? '<span class="info-bullet" aria-hidden="true">•</span>' : ''}
-          `).join('');
+          const groups = data.phoneGroups || CONTACT_PHONE_GROUPS;
+          phonesGroup.innerHTML = `
+            <div class="contact-leader-phones">
+              ${groups.map(g => `
+                <div class="contact-phone-tier">
+                  <span class="contact-phone-role">${g.role}</span>
+                  <div class="contact-phone-nums">
+                    ${g.numbers.map((p, idx) => `
+                      <a href="tel:${p.tel}" class="info-tel-link">${p.text}</a>
+                      ${idx < g.numbers.length - 1 ? '<span class="info-bullet" aria-hidden="true">•</span>' : ''}
+                    `).join('')}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
         }
 
         // Render email & fax / website dynamically
@@ -3245,7 +3264,7 @@ function initContactFormValidation() {
       } else {
         // Fallback for Concord (Official Islamabad Landline Offices)
         if (successCustomMsg) {
-          successCustomMsg.textContent = `Thank you, ${clientName}. Your inquiry for ${selectedOfficeData.name} has been received. Note: WhatsApp is not configured for Concord's official Islamabad landlines — please contact directly at 051-2271577 / 051-2877377 or email concordoverseas@gmail.com.`;
+          successCustomMsg.textContent = `Thank you, ${clientName}. Your inquiry for ${selectedOfficeData.name} has been received. Please contact directly at +923084081479 / +923455608120 or email takhtar1234@hotmail.com.`;
         }
       }
 
